@@ -54,7 +54,7 @@ export default function App() {
   useEffect(() => {
     if (tg) {
       tg.expand();
-      tg.ready();
+      tg.ready();await fetch(`${API}/register`, {
     }const API = "https://telegram-vwyl.onrender.com";
     fetchUser();
   }, []);
