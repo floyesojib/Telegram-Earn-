@@ -246,11 +246,13 @@ async function startServer() {
       appType: 'spa',
     });
     app.use(vite.middlewares);
-  } else {
-    app.use(express.static(path.join(__dirname, 'dist')));
-    app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  }async function startServer() {
+  if (process.env.NODE_ENV !== 'production') {
+    const vite = await createViteServer({
+      server: { middlewareMode: true },
+      appType: 'spa',
     });
+    app.use(vite.middlewares);
   }
 
   const PORT = process.env.PORT || 3000;
